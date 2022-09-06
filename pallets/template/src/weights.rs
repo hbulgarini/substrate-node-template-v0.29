@@ -34,7 +34,7 @@ use sp_std::marker::PhantomData;
 
 /// Weight functions needed for pallet_template.
 pub trait WeightInfo {
-	fn do_something(_s: u32) -> Weight;
+	fn do_something() -> Weight;
 }
 
 /// Weight functions for `pallet_template`.
@@ -42,7 +42,7 @@ pub struct SubstrateWeight<T>(PhantomData<T>);
 impl<T: frame_system::Config> WeightInfo for SubstrateWeight<T> {
 	// Storage: TemplateModule Something (r:0 w:1)
 	/// The range of component `s` is `[0, 100]`.
-	fn do_something(_s: u32, ) -> Weight {
+	fn do_something() -> Weight {
 		Weight::from_ref_time(10_120_000 as u64)
 			.saturating_add(T::DbWeight::get().writes(1 as u64))
 	}
